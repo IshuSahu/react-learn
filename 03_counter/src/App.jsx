@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  let [counter, setCounter]  = useState(5);
-  const addValue =() =>{
-    counter = counter+1;
-    setCounter(counter)
-  }
+  let [counter, setCounter] = useState(5);
+  // this work as whenever counter is reset all the variable with name counter will react on that change
+  const addValue = () => {
+    counter = counter + 1;
+    setCounter(counter);
+  };
   // INTERVIEW QUESTION
   // const addValue =() =>{
-  // 
+  //
   //   setCounter(counter +1)
   //   setCounter(counter +1)
   //   setCounter(counter +1)
@@ -21,32 +20,29 @@ function App() {
 
     How to Fixed this here we go: using callback inbuild method
     we it came from callback it show that it complete and then came
-  */ 
+  */
   // }
   /*
    const addValue =() =>{
-    
     setCounter((counter)=> counter +1)
     setCounter((counter)=> counter +1)
     setCounter((counter)=> counter +1)
   }
    */
-  const subValue =() =>{
-    counter = counter-1;
-    setCounter(counter)
-  }
+  const subValue = () => {
+    counter = counter - 1;
+    setCounter(counter);
+  };
   return (
     <>
       <h1>Counter value: {counter}</h1>
-      <button 
-      onClick={addValue}
-      >Increase counter {counter}</button>
+      <button onClick={addValue} style={{ margin: ".5rem" }}>
+        Increase counter {counter}{" "}
+      </button>
       <br />
-      <button 
-      onClick={subValue}
-      >Decrease counter {counter}</button>
+      <button onClick={subValue}>Decrease counter {counter}</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

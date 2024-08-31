@@ -15,6 +15,7 @@ The framework provides the flow of a software application and tells the develope
 Q: Why is React known as React?
 A: React is named React because of its ability to react to changes in data. React is called React because it was designed to be a declarative, efficient, and flexible JavaScript library for building user interfaces. 
 The name React was chosen because the library was designed to allow developers to "react" to changes in state and data within an application, and to update the user interface in a declarative and efficient manner. React is a JavaScript-based UI development library. Facebook and an open-source developer community run it. 
+
 Q: What is the difference between package.json and package-lock.json?
 A: package.json:
 •	This file is mandatory for every project
@@ -28,6 +29,7 @@ the package. json file focuses on project metadata and specifying the desired ve
 
 Q: Why should I not modify package-lock.json?
 A: package-lock.json file contains the information about the dependencies and their versions used in the project. Deleting it would cause dependencies issues in the production environment. So don't modify it, It's being handled automatically by NPM. 
+
 Q: What is the dist folder?
 A: The /dist folder contains the minimized version of the source code. The code present in the /dist folder is actually the code which is used on production web applications. Along with the minified code, the /dist folder also comprises of all the compiled modules that may or may not be used with other systems.
 Q: What is npx?

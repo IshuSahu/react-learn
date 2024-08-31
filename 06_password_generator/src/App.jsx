@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect,useRef } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -8,9 +8,9 @@ function App() {
   const [charAllow, setCharAllow] = useState(false);
 
   //useRef hook
-  const passwordRef = useRef(null)
+  const passwordRef = useRef(null);
 
-  // This is for memorization or for Optimization
+  // This is for memoiazation or for Optimization
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -22,17 +22,17 @@ function App() {
       pass += str.charAt(char);
     }
     setPassword(pass);
-  }, [length, numberAllow, charAllow]);
+  }, [length, numberAllow, charAllow, setPassword]); //setPassowrd is optional to remeber in calllback, if u use only password you we false into the infinite loop
 
-  const copyPasswordtoClipboard = useCallback(()=>{
-    passwordRef.current?.select() 
-    window.navigator.clipboard.writeText(password)
-  },[password])
-
-  // This is for Changes
+  // This is for Changes// like koi chnages ho to useEffect run krdo
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllow, charAllow, passwordGenerator]);
+
+  const copyPasswordtoClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
 
   return (
     <>
@@ -45,9 +45,10 @@ function App() {
             className=" outline-none w-full py-1 px-2 bg-white "
             placeholder="Password"
             readOnly
-            passwordRef // Here we are taking ref of useRef
+            ref={passwordRef} // Here we are taking ref of useRef to use for a copy fun
           />
-          <button className=" outline-none  w-1/3 bg-green-600  text-black " 
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             onClick={copyPasswordtoClipboard}
           >
             Copy
@@ -61,7 +62,7 @@ function App() {
               name=""
               id=""
               min={6}
-              max={100}
+              max={20}
               value={length}
               className=" cursor-pointer"
               onChange={(e) => {
@@ -78,7 +79,7 @@ function App() {
               defaultChecked={numberAllow}
               className=" cursor-pointer"
               onChange={() => {
-                setNumberAllow((prev) => !prev); // Toggle the previous state
+                setNumberAllow((prev) => !prev); // Toggle the previous state(useing prev we get access to prepious vale(name can be different))
               }}
             />
             <label>Numbers</label>

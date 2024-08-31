@@ -1,8 +1,11 @@
 import Hello from "./Send.jsx"
 function App() {
-  
+  const username = "ishu"
   return (
-    <Hello/>
+    <div>
+      <h1> hi my name is: {username}</h1>
+      <Hello/>
+    </div>
   )
 }
 
