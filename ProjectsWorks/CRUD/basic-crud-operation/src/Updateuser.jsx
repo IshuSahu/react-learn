@@ -9,14 +9,16 @@ function Updateuser() {
   const [email, setEmail] = useState();
   const navigate = useNavigate();
 
+  //when the the page load useEfffect will get the data of that params id and placeholder into there places
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getUser/${id}`)
-      .then((result) => {console.log(result)
+      .then((result) => {
+        console.log(result);
 
-        setName(result.data.name)
-        setEmail(result.data.email)
-        setAge(result.data.age)
+        setName(result.data.name);
+        setEmail(result.data.email);
+        setAge(result.data.age);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -27,8 +29,8 @@ function Updateuser() {
     axios
       .put("http://localhost:3001/updateUser/" + id, { name, email, age })
       .then((result) => {
-        console.log(result)
-        navigate('/')
+        console.log(result);
+        navigate("/");
       }) // as we get the sucessfull data we will redirect to the home page for that we use navigate
       .catch((err) => console.log(err));
   };
