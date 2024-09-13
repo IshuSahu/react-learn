@@ -36,7 +36,7 @@ export class AuthService {
 
     async login({ email, password }) {
         try {
-            return await this.account.createEmailSession(email, password); // Ensure this is correct for your SDK version
+            return await this.account.createEmailPasswordSession(email, password); // Ensure this is correct for your SDK version
         } catch (error) {
             console.error("AuthService :: login :: error", error);
             throw error;
