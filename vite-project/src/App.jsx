@@ -6,6 +6,7 @@ import Modal from "./components/Modal";
 import ToggleRender from "./routing/ToggleRender";
 import CollapsiblePage from "./routing/CollapsiblePage";
 import UserefExample from "./routing/userefExample";
+import ContextComponent from "./routing/ContextComponent";
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="modal" element={<Modal />} />
         <Route path="collapsible" element={<CollapsiblePage />} />
         <Route path="useref" element={<UserefExample/>} />
+        <Route path="contextapi" element={<ContextComponent/>} />
       </Routes>
     </BrowserRouter>
   );

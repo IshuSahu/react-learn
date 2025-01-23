@@ -10,6 +10,22 @@ function App() {
   //useRef hook
   const passwordRef = useRef(null);
 
+  // const passwordGenerator = () => {
+  //   let pass = "";
+  //   let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  //   if (numberAllow) str += "0123456789";
+  //   if (charAllow) str += "!@#$%&_-|~>?/";
+
+  //   for (let i = 1; i <= length; i++) {
+  //     let char = Math.floor(Math.random() * str.length);
+  //     pass += str.charAt(char);
+  //   }
+  //   setPassword(pass);
+  // };
+  // useEffect(() => {
+  //   passwordGenerator();
+  // }, [length, numberAllow, charAllow]);
+
   // This is for memoiazation or for Optimization
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -24,7 +40,7 @@ function App() {
     setPassword(pass);
   }, [length, numberAllow, charAllow, setPassword]); //setPassowrd is optional to remeber in calllback, if u use only password you we false into the infinite loop
 
-  // This is for Changes// like koi chnages ho to useEffect run krdo
+  // This is for Changes like koi chnages ho to useEffect run krdo
   useEffect(() => {
     passwordGenerator();
   }, [length, numberAllow, charAllow, passwordGenerator]);
@@ -33,7 +49,7 @@ function App() {
     passwordRef.current?.select();
     window.navigator.clipboard.writeText(password);
   }, [password]);
-
+  console.log("Child rendered");
   return (
     <>
       <div className=" w-full max-w-md mx-auto h-max shadow-md rounded-lg  px-4 m-8 text-orange-600">

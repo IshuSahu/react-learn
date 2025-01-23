@@ -1,7 +1,7 @@
 import React from "react";
 
 // function Card(Props){
-function Card({ userName, btnText = "click me" }) {
+function Card({ userName, btnText = "click me", someObj, newArr }) {
   console.log(userName);
   return (
     <div className="relative h-[400px] w-[300px] rounded-md">
@@ -12,6 +12,22 @@ function Card({ userName, btnText = "click me" }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
       <div className="absolute bottom-4 left-4 text-left">
+        <p className="text-lg font-medium text-white">
+          {someObj && (
+            <div>
+              <p>Name: {someObj.name}</p>
+              <p>Age: {someObj.age}</p>
+              <p>Role: {someObj.role}</p>
+            </div>
+          )}
+          {newArr && (
+            <ul>
+              {newArr.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </p>
         <h1 className="text-lg font-semibold text-white">{userName}</h1>
         <p className="mt-2 text-sm text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
