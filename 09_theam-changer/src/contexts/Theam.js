@@ -1,15 +1,14 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext } from "react";
 
 export const TheamContext = React.createContext({
-    themeMode: "light",
-    darkTheme: () => { },
-    lightTheme: () => { },
-})
+  themeMode: "light",
+  darkTheme: () => {},
+  lightTheme: () => {},
+});
 
-export const TheamContextProvider = TheamContext.Provider
-
+export const TheamContextProvider = TheamContext.Provider;
 
 //also u can create custome hooks
-export default function useTheme(){
-    return useContext(TheamContext)
+export default function useTheme() {
+  return useContext(TheamContext);
 }
