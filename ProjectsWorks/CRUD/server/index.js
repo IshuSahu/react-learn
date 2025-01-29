@@ -4,7 +4,7 @@ const cors = require("cors");
 const UserModel = require("./models/Users");
 const app = express();
 app.use(cors());
-app.use(express.json()); // where we pars the the data from backend to fronted it will parse in json formate
+app.use(express.json()); // where we parse the the data from backend to fronted it will parse in json formate
 
 mongoose.connect("mongodb://127.0.0.1:27017/crud");
 
