@@ -6,6 +6,8 @@ function Updateuser() {
   const { id } = useParams();
   const [name, setName] = useState();
   const [age, setAge] = useState();
+  const [isValidAge, setIsValidAge] = useState(true);
+
   const [email, setEmail] = useState();
   const navigate = useNavigate();
 
@@ -22,7 +24,18 @@ function Updateuser() {
       })
       .catch((err) => console.log(err));
   }, [id]);
+  const handleAgeChange = (e) => {
+    const value = e.target.value;
 
+    if (/^\d*$/.test(value)) {
+      // Allows only whole numbers (0-9) and empty value for deletion
+      setAge(value);
+      setIsValidAge(
+        value === "" || (parseInt(value, 10) > 0 && parseInt(value, 10) <= 120)
+      );
+      // Ensures the age is within a reasonable range (1-120)
+    }
+  };
   const handleUpdate = (e) => {
     e.preventDefault();
     // Add logic to update user data
@@ -57,18 +70,27 @@ function Updateuser() {
               placeholder="Enter Mail"
               className="form-control"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleAgeChange}
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="">Age</label>
+            <label htmlFor="age" className="align-text-start">
+              Age
+            </label>
             <input
               type="text"
+              id="age"
               placeholder="Enter Age"
               className="form-control"
               value={age}
-              onChange={(e) => setAge(e.target.value)}
+              onChange={handleAgeChange}
+              style={{ borderColor: isValidAge ? "" : "red" }} // Red border if invalid
             />
+            {!isValidAge && (
+              <p style={{ color: "red", fontSize: "12px" }}>
+                Please enter a valid age (1-120).
+              </p>
+            )}
           </div>
           <button className="btn btn-success">Update</button>
         </form>

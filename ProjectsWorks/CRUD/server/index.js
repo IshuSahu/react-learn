@@ -53,7 +53,6 @@ app.delete('/deleteUser/:id', (req, res) => {
       .catch(err => res.status(500).json({ message: 'Server error', error: err }));
   });
 
-  
 app.listen(3001, () => {
   console.log(`server is running! at 3001`);
 });
